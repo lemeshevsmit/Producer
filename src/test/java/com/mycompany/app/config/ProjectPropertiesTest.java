@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 
-
 class ProjectPropertiesTest {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProjectPropertiesTest.class);
@@ -25,24 +24,14 @@ class ProjectPropertiesTest {
     @Test
     void constructor(TestInfo testInfo) {
         LOGGER.info("Testing: {}", testInfo.getTestMethod().get().getName());
-        try {
-            ProjectProperties properties = ProjectProperties.getProperties();
-            Properties prop = new Properties();
-            prop.load(ProjectProperties.class.getClassLoader().getResourceAsStream("application.properties"));
-            String nameOfQueue = prop.getProperty("my.active.mq.name");
-            String runTime = prop.getProperty("my.active.mq.time");
-            String connectionLink = prop.getProperty("my.active.mq.connection.link");
-            String poisonText = prop.getProperty("my.active.mq.poison.name");
-            String username = prop.getProperty("my.active.mq.poison.connection.username");
-            String password = prop.getProperty("my.active.mq.poison.connection.password");
-            Assertions.assertEquals(nameOfQueue,properties.nameOfQueue);
-            Assertions.assertEquals(runTime,properties.runTime);
-            Assertions.assertEquals(connectionLink,properties.connectionLink);
-            Assertions.assertEquals(poisonText,properties.poisonMessage);
-            Assertions.assertEquals(username,properties.username);
-            Assertions.assertEquals(password,properties.password);
-        } catch (IOException ignored) {
-        }
+        ProjectProperties properties = ProjectProperties.getProperties();
+        Assertions.assertEquals("MyQueue", properties.nameOfQueue);
+        Assertions.assertEquals("3", properties.runTime);
+        Assertions.assertEquals("ssl://b-3dc6b128-c769-42d3-ac48-1e5f61873ae5-1.mq.eu-central-1.amazonaws.com:61617",
+                properties.connectionLink);
+        Assertions.assertEquals("Avada Kedavra", properties.poisonMessage);
+        Assertions.assertEquals("olexandrsmit", properties.username);
+        Assertions.assertEquals("8h5CHafSR4esUak", properties.password);
         LOGGER.info("Status OK");
     }
 
