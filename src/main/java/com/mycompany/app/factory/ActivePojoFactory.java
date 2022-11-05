@@ -28,7 +28,7 @@ public class ActivePojoFactory implements Factory<ActivePojo> {
                 .findAny()
                 .getAsLong();
 
-        int length = random.nextInt(15);
+        int length = random.nextInt(15)+1;
         boolean useLetters = true;
         boolean useNumbers = false;
         String generatedString =
