@@ -29,7 +29,7 @@ class ProjectPropertiesTest {
         Assertions.assertEquals("3", properties.runTime);
         Assertions.assertEquals("ssl://b-3dc6b128-c769-42d3-ac48-1e5f61873ae5-1.mq.eu-central-1.amazonaws.com:61617",
                 properties.connectionLink);
-        Assertions.assertEquals("Avada Kedavra", properties.poisonMessage);
+        Assertions.assertEquals("Avada_Kedavra", properties.poisonMessage);
         Assertions.assertEquals("olexandrsmit", properties.username);
         Assertions.assertEquals("8h5CHafSR4esUak", properties.password);
         LOGGER.info("Status OK");
