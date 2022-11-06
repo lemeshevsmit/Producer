@@ -38,7 +38,7 @@ class ActivePojoFactoryTest {
         activePojo.setCount(10L);
         activePojo.setName("TEST_MESSAGE");
 
-        String expected = "{\"name\":\"TEST_MESSAGE\",\"count\":10,\"createdAt\":[2022,11,5]}";
+        String expected = "{\"name\":\"TEST_MESSAGE\",\"count\":10,\"createdAt\":[2022,11,6]}";
         String result = new ActivePojoFactory().createJson(activePojo);
         Assertions.assertEquals(expected, result);
         LOGGER.info("Status OK");
